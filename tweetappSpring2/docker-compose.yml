@@ -1,0 +1,29 @@
+version: '2'
+services:
+  mongodb:
+    image: mongo:4.4.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/apps/mongo:/data/mongodb  
+      
+  my-app:
+    image: tweetapp:spring
+    container_name: my-app
+    ports:
+      - "8080:8080"
+    depends_on:   
+      - mongodb
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./src/main/resources/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  
+volumes:
+  elastic_data: {}
+
+networks:
+  elk:

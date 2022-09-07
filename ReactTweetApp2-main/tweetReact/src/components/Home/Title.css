@@ -1,0 +1,12 @@
+h1{
+    color: blue;
+    text-align: center;
+    position: relative;
+}
+
+#card{
+    margin-top: 10px;
+    margin-left: 20%;
+    margin-right:20%;
+    padding-bottom: 2%;
+}
